@@ -1,0 +1,14 @@
+This chapter introduces a variety of advanced Spark programming features that we
+didn・t get to cover in the previous chapters. We introduce two types of shared vari?
+ables: accumulators to aggregate information and broadcast variables to efficiently
+distribute large values. Building on our existing transformations on RDDs, we intro?
+duce batch operations for tasks with high setup costs, like querying a database. To
+expand the range of tools accessible to us, we cover Spark・s methods for interacting
+with external programs, such as scripts written in R.
+Throughout this chapter we build an example using ham radio operators・ call logs as
+the input. These logs, at the minimum, include the call signs of the stations contacted.
+Call signs are assigned by country, and each country has its own range of call signs so
+we can look up the countries involved. Some call logs also include the physical loca?
+tion of the operators, which we can use to determine the distance involved. We
+include a sample log entry in Example 6-1. The book・s sample repo includes a list of
+call signs to look up the call logs for and process the results.

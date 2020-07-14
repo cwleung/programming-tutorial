@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="jstut.js"></script>
+
+    <style type="text/css">
+        body {
+            font-size: 1.6em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: inline !important;
+        }
+
+        button {
+            border: 2px solid black;
+            background: #E5E4E2;
+            font-size: .5em;
+            font-weight: bold;
+            color: black;
+            padding: .8em 2em;
+            margin-top: .4em;
+        }
+    </style>
+</head>
+<body>
+<p id="textBox1"></p>
+<p id="textBox2"></p>
+<p id="textBox3"></p>
+<script>
+    // ... Type in
+    function inArray(arrayToCheck, value) {
+        for (i = 0; i < arrayToCheck.length; i++) {
+            if (arrayToCheck[i] = value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    var randArray = [1, 2, 3, 4, 5];
+
+    // multiply function
+    function times2(num) {
+        return num * 2;
+    }
+    function times3(num) {
+        return num * 3;
+    }
+    function multiply(func, num) {
+        return func(num);
+    }
+
+    // Function Expression
+    var triple = function (num) {
+        return num * 3;
+    }
+
+    function getSum() {
+        var sum = 0;
+        for (i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+
+    function double2(array) {
+        var newArray = [];
+        for (i = 0; i < array.length; i++) {
+            newArray.push(array[i] * 2);
+        }
+        return newArray;
+    }
+    // document.write("3 * 4 : ", multiply(triple, 4), "<br />");
+
+    function factorial(num) {
+        if (num <= 1) {
+            return 1;
+        }
+        else {
+            return num * factorial(num - 1);
+        }
+    }
+    // document.write("Factorial: ", factorial(4), "<br />");
+
+    function openAlert(msg) {
+        alert(msg);
+    }
+
+</script>
+
+<!---execute itself--->
+<a href="Javascript:void(0)"
+   onmouseover="this.style.color='red';"
+   onmouseout="this.style.color='blue';"
+   onmouseclick="alert('You clicked me.');"
+   onmousedown="this.text ='Dont\'t press too hard'"
+   onmouseup="this.text ='Thank You'">
+    Say Hello</a><br/>
+
+<!-- Get value in an input element and open alert on change -->
+<input type="text" id="randInput"
+       onChange="var dataEntered=document.getElementById('randInput').value; alert('User Typed ' + dataEntered);">
+<!-- When a user clicks a key provide info on the key clicked -->
+<form action="#" id="sampForm">
+    <input id='charInput' type="text">
+    <p id="keyData">Key Data Here</p>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+<br/><br/>
+
+<img src="download.jpg" id="logo">
+<button id="logoButton">Get Logo</button>
+<br/>
+<input id='mouseInput' type="text" size="30"><br/>
+
+Mouse X: <input type="text" id="mouseX"><br/>
+Mouse Y: <input type="text" id="mouseY"><br/>
+
+<button id="clearInputs">Clear Inputs</button>
+<br/>
+
+<script>
+    function getChar(event) {
+        if (event.which == null) {
+            return String.fromCharCode(evemt.keyCode);
+        } else if (event.which != 0 && event.charCode != 0) {
+            return String.fromCharCode(event.which);
+        } else {
+            return null;
+        }
+    }
+
+    document.getElementById('charInput').onkeypress =
+            function (event) {
+                var char = getChar(event || window.event);
+                if (!char) return false;
+                document.getElementById('keyData').innerHTML = char + " was clicked";
+                return true;
+            };
+
+    document.getElementById('charInput').onfocus = function (event) {
+        document.getElementById('keyData').innerHTML = "Text Selected";
+    };
+
+    document.getElementById('logo').onmouseover = function (event) {
+        document.getElementById('logo').src = "download1.jpg";
+        document.getElementById('mouseInput').value = "Mouse over image.";
+    };
+    document.getElementById('logo').onmouseout = function (event) {
+        document.getElementById('logo').src = "download.jpg";
+        document.getElementById('mouseInput').value = "Mouse out image.";
+    };
+
+    document.getElementById('logo').onclick = function (event) {
+        document.getElementById('logo').className = "hidden";
+    };
+    document.getElementById('logoButton').onclick = function (event) {
+        document.getElementById('logo').className = "show";
+    };
+
+    document.body.onmousemove = function (e) {
+        e = e || window.event;
+        var pageX = e.pageX;
+        var pageY = e.pageY;
+        if (pageX === undefined) {
+            pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        document.getElementById('mouseX').value = pageX;
+        document.getElementById('mouseY').value = pageY;
+    };
+
+
+    document.getElementById('clearInputs').onclick = function (event) {
+        var inputElements = document.getElementsByTagName('input');
+        for (var i = 0; i < inputElements.length; i++) {
+            if (inputElements[i].type == "text") {
+                inputElements[i].value = "";
+            }
+        }
+    };
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var cust1 = {
+        name: "John Smith",
+        street: "123 Main",
+        city: "Pittsburgh",
+        state: "PA",
+        email: "jsmith@aol.com",
+        balance: 120.50,
+        payDownBal: function (amt) {
+            this.balance -= amt;
+        },
+        addToBal: function (amt) {
+            this.balance += amt;
+        }
+    };
+    document.write("Customer Name : ", cust1.name, "<br />");
+
+    cust1.country = "US";
+
+    document.write("Customer Country : ", cust1.country, "<br />");
+
+    delete cust1.country;
+
+    for (var prop in cust1) {
+        if (cust1.hasOwnProperty(prop)) {
+            document.write(prop, "<br />");
+        }
+    }
+
+    document.write("name in cust1 : ", "name" in cust1, "<br />");
+
+    function getInfo(cust) {
+        return cust.name + " Information: " + cust.balance;
+    }
+    cust1.payDownBal(20.50);
+
+    document.write(getInfo(cust1), "<br />");
+
+    <!--Generic Object-->
+    function Customer(name, street, state, email, balance) {
+        this.name = name;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.emali = email;
+        this.balance = balance;
+        this.payDownBal = function (amt) {
+            this.balance -= amt;
+        };
+        this.addToBal = function (amt) {
+            this.balance += amt;
+        };
+    }
+    <!--Shared Prototype Property-->
+    // Shared value for all customer type
+    Customer.prototype.isCreditAvail = false;
+    // Override toString method
+    Customer.prototype.toString = function(){
+        return "To String Function is called.";
+    }
+
+
+</script>
+</body>
+</html>

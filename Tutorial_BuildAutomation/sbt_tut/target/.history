@@ -1,0 +1,25 @@
+set organization := "com.dudy.sbt"
+session end
+session save
+compile
+run
+set scalaVersion := "2.10.6"
+session save
+clean package
+sbt clean package
+clean
+compile
+run
+compile
+run
+compile
+run
+reload
+compile
+run
+compile
+realod
+reload
+run
+compile
+run

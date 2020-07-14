@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sampDiv2"><p>Lorem ipsum dolor sit amet, <em>consectetur adipiscing</em> elit. Proin eget turpis eget quam
+    luctus malesuada ut ac nulla. Suspendisse fermentum magna neque, a auctor felis pretium eget. Fusce ornare feugiat
+    magna, ut faucibus sapien congue ut. Nunc nec fringilla ex, nec varius nisl. Ut eget laoreet nisi. Aenean quis
+    venenatis mauris, at volutpat ante. Donec sollicitudin lacinia ornare. In quis accumsan ligula, id egestas enim.</p>
+    <p>Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Proin eget turpis eget quam luctus malesuada ut
+        ac nulla. Suspendisse fermentum magna neque, a auctor felis pretium eget. <em>Fusce ornare</em> feugiat magna,
+        ut faucibus sapien congue ut. <b>Nunc nec fringilla</b> ex, nec varius nisl.</p></div>
+
+<img src="download.jpg" id="logo2" alt="NTT Logo"><br/>
+
+<button id="goToGoogle">Go to Google</button>
+<br/>
+
+<button id="forwardPage">Forward Page</button>
+<br/>
+
+<button id="backPage">Back Page</button>
+<br/>
+
+<button id="reload">Reload Page</button>
+<br/>
+<script>
+    document.write("Current URL : ", window.location.href, "<br/>");
+    document.write("Current HOST : ", window.location.hostname, "<br/>");
+    document.write("Current PATH : ", window.location.pathname, "<br/>");
+
+    document.getElementById('goToGoogle').onclick = function (event) {
+        window.location.href = "http://google.com";
+    }
+    document.getElementById('forwardPage').onclick = function (event) {
+        history.forward();
+    }
+    document.getElementById('backPage').onclick = function (event) {
+        history.back();
+        // history.go(-2);
+    }
+    document.getElementById('reload').onclick = function (event) {
+        window.location.reload(true);
+    }
+
+<!--Styling-->
+
+    var pElements = document.getElementsByTagName('p');
+    pElements[1].style.backgroundColor='#ERDECD';
+
+    document.childNodes[1].style.backgroundColor="#FAEBD7";
+
+    var sampDiv2=document.getElementById('sampDiv2');
+    sampDiv2.childNodes[0].style.background="#F0FFFF";
+    sampDiv2.childNodes[0].childNodes[1].style.background="#BFAFB2";
+
+    // Find Text Node
+    document.write("Node Type : ", sampDiv2.childNodes[0].childNodes[0].nodeType, "<br />");
+    document.write("Node Name : ", sampDiv2.childNodes[0].childNodes[0].nodeName, "<br />");
+
+    var logo2=document.getElementById('logo2');
+    document.write("Logo has alt : ", logo2.hasAttribute("alt"), "<br />");
+
+    logo2.setAttribute("alt","<br />");
+    document.write("Logo alt value: ", logo2.getAttribute("alt"), "<br />");
+
+    var attrList = document.getElementById('logo2').attributes;
+    for(var i =0;i<attrList.length;i++){
+        document.write("Attribute ", i, " : " , attrList[i].nodeName," : ", attrList[i].nodeValue,"<br />");
+    }
+
+    var para3=document.createElement("p");
+    para3.setAttribute("id","para3");
+    para3.innerHTML = "發佈日期：2015年9月20日"+
+    "Get the Cheat Sheet Here : http://goo.gl/TxNsQO"+
+            "Best Book on JavaScript : http://amzn.to/1WbMYvm";
+
+   // sampDiv2.appendChild(para3);
+    sampDiv2.insertBefore(para3,sampDiv2.childNodes[0]);
+
+
+</script>
+</body>
+</html>
